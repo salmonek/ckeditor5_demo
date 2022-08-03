@@ -1,0 +1,6 @@
+ckeditor5:
+  css:
+    component:
+      css/ckeditor5_demo.css: {}
+  js:
+    js/ckeditor5_demo.js: {}

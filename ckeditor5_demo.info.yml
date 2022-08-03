@@ -1,0 +1,5 @@
+name: CKEditor 5 demo
+description: Provides a demo integration of CKEditor 5.
+package: Custom
+type: module
+core_version_requirement: ^10

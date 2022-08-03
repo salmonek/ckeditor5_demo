@@ -1,0 +1,23 @@
+ckeditor5_demo.settings:
+  path: '/admin/config/ckeditor5-demo'
+  defaults:
+    _title: 'CKEditor 5 Demo Configuration'
+    _form: 'Drupal\ckeditor5_demo\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+ckeditor5_demo.content_edit:
+  path: '/ckeditor5-demo/edit'
+  defaults:
+    _title: 'CKEditor 5 Demo edit page'
+    _form: 'Drupal\ckeditor5_demo\Form\ContentEditForm'
+  requirements:
+    _permission: 'access content'
+
+ckeditor5_demo.view:
+  path: '/ckeditor5-demo/content-view'
+  defaults:
+    _title: 'CKEditor 5 view page'
+    _controller: '\Drupal\ckeditor5_demo\Controller\ContentView::build'
+  requirements:
+    _permission: 'access content'

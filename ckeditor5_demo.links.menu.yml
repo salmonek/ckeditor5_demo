@@ -1,0 +1,5 @@
+ckeditor5_demo.settings:
+  title: CKEditor 5 Demo
+  description: Configuration form CKEditor 5 Demo
+  route_name: ckeditor5_demo.settings
+  weight: 10
