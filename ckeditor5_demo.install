@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function ckeditor5_demo_install($is_syncing) {
+  // Set demo page as frontpage.
+  $site_config = Drupal::configFactory()->getEditable('system.site');
+  $site_config->set('page.front', '/ckeditor5-demo/content-view');
+  $site_config->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function ckeditor5_demo_uninstall($is_syncing) {
+  // Restore Drupal default frontpage if it wasn't manually changed.
+  $site_config = Drupal::configFactory()->getEditable('system.site');
+  if ($site_config->get('page.front') == '/ckeditor5-demo/content-view') {
+    $site_config->set('page.front', '/node');
+    $site_config->save();
+  }
+
+  // Clean the Drupal State.
+  Drupal::state()->delete('ckeditor5_demo.content');
+}

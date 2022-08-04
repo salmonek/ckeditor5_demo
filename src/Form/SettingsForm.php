@@ -8,17 +8,17 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Configure Ckeditor5 demo settings for this site.
+ * Configure Ckeditor5 demo settings form.
  */
 class SettingsForm extends ConfigFormBase {
 
   /**
-   * @var \Drupal\Core\Session\AccountInterface
+   * @var \Drupal\Core\Asset\LibraryDiscovery
    */
   protected $libraryDiscovery;
 
   /**
-   * @param \Drupal\Core\Session\AccountInterface $current_user
+   * @param \Drupal\Core\Asset\LibraryDiscovery $library_discovery
    */
   public function __construct(LibraryDiscovery $library_discovery) {
     $this->libraryDiscovery = $library_discovery;
@@ -53,12 +53,12 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $description = $this->t('Enter url for ckeditor.js (CKEditor 5). You can find one at');
     $description .= ' <a href="https://cdn.ckeditor.com/" target="_blank">https://cdn.ckeditor.com/</a><br />';
-    $description .= $this->t('Empty value will fallback to v34.0.0');
     $form['cdn_url'] = [
       '#type' => 'textfield',
       '#title' => $this->t('CDN Url'),
-      '#default_value' => $this->config('ckeditor5_demo.settings')->get('cdn_url'),
-      '#description' =>  $description,
+      '#default_value' => $this->config('ckeditor5_demo.settings')
+        ->get('cdn_url'),
+      '#description' => $description,
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -70,7 +70,7 @@ class SettingsForm extends ConfigFormBase {
     $this->config('ckeditor5_demo.settings')
       ->set('cdn_url', $form_state->getValue('cdn_url'))
       ->save();
-    // Clear library definitions so it can be rebuilt with new file from CDN.
+    // Clear library definitions, so it can be rebuilt with new file from CDN.
     $this->libraryDiscovery->clearCachedDefinitions();
     parent::submitForm($form, $form_state);
   }

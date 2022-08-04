@@ -1,0 +1,11 @@
+ckeditor5_demo.view:
+  route_name: ckeditor5_demo.view
+  title: 'View'
+  base_route: ckeditor5_demo.view
+  weight: 1
+
+ckeditor5_demo.edit:
+  route_name: ckeditor5_demo.content_edit
+  title: 'Edit'
+  base_route: ckeditor5_demo.view
+  weight: 1

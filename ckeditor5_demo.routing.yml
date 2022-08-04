@@ -9,7 +9,7 @@ ckeditor5_demo.settings:
 ckeditor5_demo.content_edit:
   path: '/ckeditor5-demo/edit'
   defaults:
-    _title: 'CKEditor 5 Demo edit page'
+    _title: 'CKEditor 5 Demo edit content'
     _form: 'Drupal\ckeditor5_demo\Form\ContentEditForm'
   requirements:
     _permission: 'access content'
@@ -17,7 +17,7 @@ ckeditor5_demo.content_edit:
 ckeditor5_demo.view:
   path: '/ckeditor5-demo/content-view'
   defaults:
-    _title: 'CKEditor 5 view page'
+    _title: 'CKEditor 5 Demo'
     _controller: '\Drupal\ckeditor5_demo\Controller\ContentView::build'
   requirements:
     _permission: 'access content'
